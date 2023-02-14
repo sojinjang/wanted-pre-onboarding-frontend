@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import { get, post, patch, del } from "../utils/api";
+import { get, post } from "../utils/api";
 import ApiUrl from "../constants/ApiUrl";
+import SingleTodo from "../components/todo/SingleTodo";
 
 const Todo = () => {
   const [todos, setTodos] = useState([]);
@@ -24,21 +25,6 @@ const Todo = () => {
         return [...prev, newTodo];
       });
       setTodoInput("");
-    } catch (err) {
-      alert(err.message);
-    }
-  };
-  const onChangeCheckbox = async (id, isChecked, todo) => {
-    try {
-      await patch(ApiUrl.TODO, id, { isCompleted: isChecked, todo });
-    } catch (err) {
-      alert(err.message);
-    }
-  };
-  const onClickDelete = async (id) => {
-    try {
-      await del(ApiUrl.TODO, id);
-      setTodos(todos.filter((todo) => todo.id !== id));
     } catch (err) {
       alert(err.message);
     }
@@ -66,46 +52,7 @@ const Todo = () => {
         </button>
       </div>
       {todos.map((todo) => {
-        return (
-          <li className="text-[1vh] list-none" key={todo.id}>
-            <label className="inline-block whitespace-nowrap">
-              <input
-                id={todo.id}
-                type="checkbox"
-                onChange={(e) => {
-                  onChangeCheckbox(e.target.id, e.target.checked, todo.todo);
-                }}
-                defaultChecked={todo.isCompleted}
-                className="align-middle w-[20px] h-[20px]"
-              />
-              {false ? (
-                <input
-                  value={todo.todo}
-                  className="bg-slate-100 m-2 p-2 rounded-lg"
-                  data-testid="modify-input"
-                />
-              ) : (
-                <span className="ml-2 align-middle">{todo.todo}</span>
-              )}
-            </label>
-            <button
-              onClick={() => {}}
-              className="bg-blue-200 m-2 p-2 rounded-lg"
-              data-testid="modify-button"
-            >
-              수정
-            </button>
-            <button
-              onClick={() => {
-                onClickDelete(todo.id);
-              }}
-              className="bg-blue-200 m-2 p-2 rounded-lg"
-              data-testid="delete-button"
-            >
-              삭제
-            </button>
-          </li>
-        );
+        return <SingleTodo key={todo.id} todo={todo} todos={todos} setTodos={setTodos} />;
       })}
     </div>
   );
