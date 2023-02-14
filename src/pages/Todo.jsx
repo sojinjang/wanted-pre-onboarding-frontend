@@ -41,7 +41,7 @@ const Todo = () => {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen items-center justify-center">
+    <div className="flex flex-col items-center justify-center">
       <div className="flex">
         <input
           value={todoInput}
@@ -51,7 +51,7 @@ const Todo = () => {
         />
         <button
           onClick={postTodoData}
-          className="bg-blue-400 m-2 p-2 rounded-lg"
+          className="text-[1.5vh] bg-blue-200 m-2 p-2 rounded-lg"
           data-testid="new-todo-add-button"
         >
           추가
@@ -59,7 +59,7 @@ const Todo = () => {
       </div>
       {todos.map((todo) => {
         return (
-          <li className="text-[2vh]" key={todo.id}>
+          <li className="text-[2vh] list-none" key={todo.id}>
             <label className="inline-block whitespace-nowrap">
               <input
                 id={todo.id}
@@ -68,10 +68,22 @@ const Todo = () => {
                   onChangeCheckbox(e.target.id, e.target.checked, todo.todo);
                 }}
                 defaultChecked={todo.isCompleted}
-                className="align-middle"
+                className="align-middle w-[20px] h-[20px]"
               />
               <span className="ml-2 align-middle">{todo.todo}</span>
             </label>
+            <button
+              className="text-[1vh] bg-blue-200 m-2 p-2 rounded-lg"
+              data-testid="modify-button"
+            >
+              수정
+            </button>
+            <button
+              className="text-[1vh] bg-blue-200 m-2 p-2 rounded-lg"
+              data-testid="delete-button"
+            >
+              삭제
+            </button>
           </li>
         );
       })}
