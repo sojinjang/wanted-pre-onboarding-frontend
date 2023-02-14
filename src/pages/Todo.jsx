@@ -23,9 +23,9 @@ const Todo = () => {
         todos.map((todo) => {
           return (
             <li key={todo.id}>
-              <label>
-                <input checked={todo.isCompleted} type="checkbox" />
-                <span>{todo.todo}</span>
+              <label className="inline-block whitespace-nowrap">
+                <input className="align-middle" checked={todo.isCompleted} type="checkbox" />
+                <span className="ml-2 align-middle">{todo.todo}</span>
               </label>
             </li>
           );
