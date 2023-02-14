@@ -38,7 +38,6 @@ async function post(endpointInput, data) {
     const error = await res.json();
     throw new Error(error.message);
   }
-  console.log(Boolean(res));
 
   try {
     const result = await res.json();
