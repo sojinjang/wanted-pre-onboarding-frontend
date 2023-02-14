@@ -18,7 +18,17 @@ const SingleTodo = ({ todo, todos, setTodos }) => {
       alert(err.message);
     }
   };
-  const updateTodo = async () => {
+  const updateIsCompleted = async () => {
+    try {
+      await patch(ApiUrl.TODO, todo.id, {
+        todo: todo.todo,
+        isCompleted: checkbox.current.checked,
+      });
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+  const reviseTodo = async () => {
     try {
       await patch(ApiUrl.TODO, todo.id, {
         todo: todoInput,
@@ -35,7 +45,7 @@ const SingleTodo = ({ todo, todos, setTodos }) => {
         <input
           type="checkbox"
           ref={checkbox}
-          onChange={updateTodo}
+          onChange={updateIsCompleted}
           defaultChecked={todo.isCompleted}
           className="align-middle mr-1 w-[20px] h-[20px]"
         />
@@ -53,7 +63,7 @@ const SingleTodo = ({ todo, todos, setTodos }) => {
       {isEditing ? (
         <>
           <button
-            onClick={updateTodo}
+            onClick={reviseTodo}
             className="bg-blue-200 m-2 p-2 rounded-lg"
             data-testid="submit-button"
           >
