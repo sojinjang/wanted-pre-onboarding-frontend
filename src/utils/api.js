@@ -69,10 +69,9 @@ async function patch(endpointInput, params = "", data) {
   return result;
 }
 
-async function del(endpointInput, params = "", data = {}) {
+async function del(endpointInput, params = "") {
   const endpoint = process.env.REACT_APP_SERVER_URL + endpointInput;
   const apiUrl = params === "" ? endpoint : `${endpoint}/${params}`;
-  const bodyData = JSON.stringify(data);
 
   const res = await fetch(apiUrl, {
     method: "DELETE",
@@ -80,7 +79,6 @@ async function del(endpointInput, params = "", data = {}) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${getSavedItem(Keys.ACCESS_TOKEN)}`,
     },
-    body: bodyData,
   });
 
   if (!res.ok) {
@@ -89,4 +87,4 @@ async function del(endpointInput, params = "", data = {}) {
   }
 }
 
-export { get, post, patch, del as delete };
+export { get, post, patch, del };
