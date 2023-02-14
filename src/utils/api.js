@@ -17,7 +17,7 @@ async function get(endpointInput, params = "") {
     throw new Error(error.message);
   }
 
-  const result = res;
+  const result = await res.json();
   return result;
 }
 
@@ -38,9 +38,14 @@ async function post(endpointInput, data) {
     const error = await res.json();
     throw new Error(error.message);
   }
+  console.log(Boolean(res));
 
-  const result = res;
-  return result;
+  try {
+    const result = await res.json();
+    return result;
+  } catch {
+    return;
+  }
 }
 
 async function patch(endpointInput, params = "", data) {
@@ -61,7 +66,7 @@ async function patch(endpointInput, params = "", data) {
     throw new Error(error.message);
   }
 
-  const result = res;
+  const result = await res.json();
   return result;
 }
 
@@ -83,9 +88,6 @@ async function del(endpointInput, params = "", data = {}) {
     const error = await res.json();
     throw new Error(error.message);
   }
-
-  const result = res;
-  return result;
 }
 
 export { get, post, patch, del as delete };
