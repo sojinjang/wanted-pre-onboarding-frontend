@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { get, post } from "../utils/api";
+import { get, post, patch } from "../utils/api";
 import ApiUrl from "../constants/ApiUrl";
 
 const Todo = () => {
@@ -28,6 +28,13 @@ const Todo = () => {
       alert(err.message);
     }
   };
+  const onChangeCheckbox = async (id, isChecked, todo) => {
+    try {
+      await patch(ApiUrl.TODO, id, { isCompleted: isChecked, todo });
+    } catch (err) {
+      alert(err.message);
+    }
+  };
 
   useEffect(() => {
     getTodoData();
@@ -50,17 +57,24 @@ const Todo = () => {
           추가
         </button>
       </div>
-      {todos &&
-        todos.map((todo) => {
-          return (
-            <li className="text-[2vh]" key={todo.id}>
-              <label className="inline-block whitespace-nowrap">
-                <input className="align-middle" checked={todo.isCompleted} type="checkbox" />
-                <span className="ml-2 align-middle">{todo.todo}</span>
-              </label>
-            </li>
-          );
-        })}
+      {todos.map((todo) => {
+        return (
+          <li className="text-[2vh]" key={todo.id}>
+            <label className="inline-block whitespace-nowrap">
+              <input
+                id={todo.id}
+                type="checkbox"
+                onChange={(e) => {
+                  onChangeCheckbox(e.target.id, e.target.checked, todo.todo);
+                }}
+                defaultChecked={todo.isCompleted}
+                className="align-middle"
+              />
+              <span className="ml-2 align-middle">{todo.todo}</span>
+            </label>
+          </li>
+        );
+      })}
     </div>
   );
 };
