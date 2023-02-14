@@ -20,6 +20,9 @@ const SignIn = () => {
   };
   const onClickSignIn = async () => {
     try {
+      const response = await post(ApiUrl.SIGN_IN, inputValue);
+      saveItem(Keys.ACCESS_TOKEN, response[Keys.ACCESS_TOKEN]);
+      navigate(PRIVATE_ROUTE.todo.path);
     } catch (err) {
       alert(err.message);
     }
