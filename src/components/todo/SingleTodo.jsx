@@ -30,10 +30,20 @@ const SingleTodo = ({ todo, todos, setTodos }) => {
   };
   const reviseTodo = async () => {
     try {
-      await patch(ApiUrl.TODO, todo.id, {
+      const newTodo = await patch(ApiUrl.TODO, todo.id, {
         todo: todoInput,
         isCompleted: checkbox.current.checked,
       });
+      setTodos((prevTodos) => {
+        const newTodos = prevTodos.map((prevTodo) => {
+          return {
+            ...prevTodo,
+            todo: prevTodo.id === todo.id ? newTodo.todo : prevTodo.todo,
+          };
+        });
+        return newTodos;
+      });
+      setIsEditing(false);
     } catch (err) {
       alert(err.message);
     }
