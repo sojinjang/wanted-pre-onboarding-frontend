@@ -18,7 +18,7 @@ const SingleTodo = ({ todo, filterDeletedTodo, updateRevisedTodo }) => {
       alert(err.message);
     }
   };
-  const updateIsCompleted = async () => {
+  const updateCheckbox = async () => {
     try {
       await patch(ApiUrl.TODO, todo.id, {
         todo: todo.todo,
@@ -40,6 +40,10 @@ const SingleTodo = ({ todo, filterDeletedTodo, updateRevisedTodo }) => {
       alert(err.message);
     }
   };
+  const onClickCancel = () => {
+    setTodoInput(todo.todo);
+    setIsEditing(false);
+  };
 
   return (
     <li className="text-[1vh] list-none">
@@ -47,7 +51,7 @@ const SingleTodo = ({ todo, filterDeletedTodo, updateRevisedTodo }) => {
         <input
           type="checkbox"
           ref={checkbox}
-          onChange={updateIsCompleted}
+          onChange={updateCheckbox}
           defaultChecked={todo.isCompleted}
           className="align-middle mr-1 w-[20px] h-[20px]"
         />
@@ -71,7 +75,11 @@ const SingleTodo = ({ todo, filterDeletedTodo, updateRevisedTodo }) => {
           >
             제출
           </button>
-          <button className="bg-gray-200 m-2 p-2 rounded-lg" data-testid="cancel-button">
+          <button
+            onClick={onClickCancel}
+            className="bg-gray-200 m-2 p-2 rounded-lg"
+            data-testid="cancel-button"
+          >
             취소
           </button>
         </>
