@@ -67,7 +67,7 @@ const Todo = () => {
       </div>
       {todos.map((todo) => {
         return (
-          <li className="text-[2vh] list-none" key={todo.id}>
+          <li className="text-[1vh] list-none" key={todo.id}>
             <label className="inline-block whitespace-nowrap">
               <input
                 id={todo.id}
@@ -78,10 +78,19 @@ const Todo = () => {
                 defaultChecked={todo.isCompleted}
                 className="align-middle w-[20px] h-[20px]"
               />
-              <span className="ml-2 align-middle">{todo.todo}</span>
+              {false ? (
+                <input
+                  value={todo.todo}
+                  className="bg-slate-100 m-2 p-2 rounded-lg"
+                  data-testid="modify-input"
+                />
+              ) : (
+                <span className="ml-2 align-middle">{todo.todo}</span>
+              )}
             </label>
             <button
-              className="text-[1vh] bg-blue-200 m-2 p-2 rounded-lg"
+              onClick={() => {}}
+              className="bg-blue-200 m-2 p-2 rounded-lg"
               data-testid="modify-button"
             >
               수정
@@ -90,7 +99,7 @@ const Todo = () => {
               onClick={() => {
                 onClickDelete(todo.id);
               }}
-              className="text-[1vh] bg-blue-200 m-2 p-2 rounded-lg"
+              className="bg-blue-200 m-2 p-2 rounded-lg"
               data-testid="delete-button"
             >
               삭제
