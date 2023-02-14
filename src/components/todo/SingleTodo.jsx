@@ -45,8 +45,12 @@ const SingleTodo = ({ todo, todos, setTodos }) => {
       </label>
       {isEditing ? (
         <>
-          <button data-testid="submit-button">제출</button>
-          <button data-testid="cancel-button">취소</button>
+          <button className="bg-blue-200 m-2 p-2 rounded-lg" data-testid="submit-button">
+            제출
+          </button>
+          <button className="bg-gray-200 m-2 p-2 rounded-lg" data-testid="cancel-button">
+            취소
+          </button>
         </>
       ) : (
         <>
@@ -54,7 +58,7 @@ const SingleTodo = ({ todo, todos, setTodos }) => {
             onClick={() => {
               setIsEditing(true);
             }}
-            className="bg-blue-200 m-2 p-2 rounded-lg"
+            className="bg-green-200 m-2 p-2 rounded-lg"
             data-testid="modify-button"
           >
             수정
@@ -63,7 +67,7 @@ const SingleTodo = ({ todo, todos, setTodos }) => {
             onClick={() => {
               onClickDelete(todo.id);
             }}
-            className="bg-blue-200 m-2 p-2 rounded-lg"
+            className="bg-red-200 m-2 p-2 rounded-lg"
             data-testid="delete-button"
           >
             삭제
