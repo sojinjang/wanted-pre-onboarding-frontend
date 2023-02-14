@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { isValidEmail, isValidPw } from "../utils/validator";
-import ApiUrl from "../constants/ApiUrl";
 import { post } from "../utils/api";
+import ApiUrl from "../constants/ApiUrl";
+import { PUBLIC_ROUTE } from "../router/ROUTE_INFO";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({ email: "", password: "" });
   const [isEnable, setIsEnable] = useState(false);
   const handleInput = (event) => {
@@ -15,6 +19,7 @@ const SignUp = () => {
   const onClickSignUp = async () => {
     try {
       await post(ApiUrl.SIGN_UP, inputValue);
+      navigate(PUBLIC_ROUTE.signIn.path);
     } catch (err) {
       alert(err.message);
     }
