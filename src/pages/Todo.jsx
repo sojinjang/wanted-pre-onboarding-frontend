@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { get, post, patch } from "../utils/api";
+import { get, post, patch, del } from "../utils/api";
 import ApiUrl from "../constants/ApiUrl";
 
 const Todo = () => {
@@ -31,6 +31,14 @@ const Todo = () => {
   const onChangeCheckbox = async (id, isChecked, todo) => {
     try {
       await patch(ApiUrl.TODO, id, { isCompleted: isChecked, todo });
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+  const onClickDelete = async (id) => {
+    try {
+      await del(ApiUrl.TODO, id);
+      setTodos(todos.filter((todo) => todo.id !== id));
     } catch (err) {
       alert(err.message);
     }
@@ -79,6 +87,9 @@ const Todo = () => {
               수정
             </button>
             <button
+              onClick={() => {
+                onClickDelete(todo.id);
+              }}
               className="text-[1vh] bg-blue-200 m-2 p-2 rounded-lg"
               data-testid="delete-button"
             >
