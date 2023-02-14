@@ -52,7 +52,7 @@ async function patch(endpointInput, params = "", data) {
   const apiUrl = params === "" ? endpoint : `${endpoint}/${params}`;
   const bodyData = JSON.stringify(data);
   const res = await fetch(apiUrl, {
-    method: "PATCH",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${getSavedItem(Keys.ACCESS_TOKEN)}`,
