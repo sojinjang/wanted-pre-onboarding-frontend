@@ -4,4 +4,4 @@ class ApiUrl {
   static TODO = "/todos";
 }
 
-module.exports = Object.freeze(ApiUrl);
+export default Object.freeze(ApiUrl);
