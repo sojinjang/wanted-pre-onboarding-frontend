@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import { patch, del } from "../../utils/api";
 import ApiUrl from "../../constants/ApiUrl";
 
-const SingleTodo = ({ todo, todos, setTodos }) => {
+const SingleTodo = ({ todo, filterDeletedTodo, updateRevisedTodo }) => {
   const checkbox = useRef();
   const [isEditing, setIsEditing] = useState(false);
   const [todoInput, setTodoInput] = useState(todo.todo);
@@ -13,7 +13,7 @@ const SingleTodo = ({ todo, todos, setTodos }) => {
   const onClickDelete = async (id) => {
     try {
       await del(ApiUrl.TODO, id);
-      setTodos(todos.filter((todo) => todo.id !== id));
+      filterDeletedTodo();
     } catch (err) {
       alert(err.message);
     }
@@ -34,15 +34,7 @@ const SingleTodo = ({ todo, todos, setTodos }) => {
         todo: todoInput,
         isCompleted: checkbox.current.checked,
       });
-      setTodos((prevTodos) => {
-        const newTodos = prevTodos.map((prevTodo) => {
-          return {
-            ...prevTodo,
-            todo: prevTodo.id === todo.id ? newTodo.todo : prevTodo.todo,
-          };
-        });
-        return newTodos;
-      });
+      updateRevisedTodo(todo.id, newTodo);
       setIsEditing(false);
     } catch (err) {
       alert(err.message);

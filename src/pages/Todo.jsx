@@ -29,6 +29,22 @@ const Todo = () => {
       alert(err.message);
     }
   };
+  const filterDeletedTodo = (targetId) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((prevTodo) => prevTodo.id !== targetId);
+    });
+  };
+  const updateRevisedTodo = (targetId, newTodo) => {
+    setTodos((prevTodos) => {
+      const newTodos = prevTodos.map((prevTodo) => {
+        return {
+          ...prevTodo,
+          todo: prevTodo.id === targetId ? newTodo.todo : prevTodo.todo,
+        };
+      });
+      return newTodos;
+    });
+  };
 
   useEffect(() => {
     getTodoData();
@@ -52,7 +68,16 @@ const Todo = () => {
         </button>
       </div>
       {todos.map((todo) => {
-        return <SingleTodo key={todo.id} todo={todo} todos={todos} setTodos={setTodos} />;
+        return (
+          <SingleTodo
+            key={todo.id}
+            todo={todo}
+            filterDeletedTodo={() => {
+              filterDeletedTodo(todo.id);
+            }}
+            updateRevisedTodo={updateRevisedTodo}
+          />
+        );
       })}
     </div>
   );
