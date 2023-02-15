@@ -46,6 +46,7 @@ const SignIn = () => {
         <input
           name="password"
           onChange={handleInput}
+          type="password"
           placeholder="비밀번호 (8자 이상)"
           className="bg-slate-100 m-2 p-2 rounded-lg"
           data-testid="password-input"
