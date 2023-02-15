@@ -39,12 +39,14 @@ const SignIn = () => {
         <input
           name="email"
           onChange={handleInput}
+          placeholder="이메일"
           className="bg-slate-100 m-2 p-2 rounded-lg"
           data-testid="email-input"
         />
         <input
           name="password"
           onChange={handleInput}
+          placeholder="비밀번호 (8자 이상)"
           className="bg-slate-100 m-2 p-2 rounded-lg"
           data-testid="password-input"
         />
