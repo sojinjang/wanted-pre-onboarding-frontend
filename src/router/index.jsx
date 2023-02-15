@@ -7,7 +7,7 @@ import { Home } from "../pages";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Home />} />
         {PUBLIC_ROUTE_ARR.map((route, index) => {
