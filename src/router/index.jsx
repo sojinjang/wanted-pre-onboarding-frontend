@@ -3,11 +3,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { PublicRouter, PrivateRouter } from "./CustomRouters";
 import { PUBLIC_ROUTE_ARR, PRIVATE_ROUTE_ARR } from "./ROUTE_INFO";
+import { Home } from "../pages";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Home />} />
         {PUBLIC_ROUTE_ARR.map((route, index) => {
           return (
             <Route
