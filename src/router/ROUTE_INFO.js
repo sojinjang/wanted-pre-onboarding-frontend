@@ -1,8 +1,12 @@
 import React from "react";
 
-import { SignUp, SignIn, Todo } from "../pages";
+import { Home, SignUp, SignIn, Todo } from "../pages";
 
 export const PUBLIC_ROUTE = {
+  home: {
+    path: "/",
+    element: <Home />,
+  },
   signUp: {
     path: "/signup",
     element: <SignUp />,
