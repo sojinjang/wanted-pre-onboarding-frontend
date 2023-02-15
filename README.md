@@ -1,4 +1,9 @@
 # wanted pre-onboarding frontend
+<div>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/>
+  <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=flat-square&logo=Tailwind CSS&logoColor=white"/>
+</div>
 2023 wanted 프리온보딩 프론트엔드 인턴십 사전과제 ([🔗 과제 가이드 링크](https://github.com/walking-sunset/selection-task))
 
 ## [**🔗 배포 링크 이동**](https://sojinjang.github.io/wanted-pre-onboarding-frontend/)
