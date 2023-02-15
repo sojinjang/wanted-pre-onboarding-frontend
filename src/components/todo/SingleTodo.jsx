@@ -46,7 +46,7 @@ const SingleTodo = ({ todo, filterDeletedTodo, updateRevisedTodo }) => {
   };
 
   return (
-    <li className="text-[1vh] list-none">
+    <li className="text-[1vh] list-none my-1">
       <label className="inline-block whitespace-nowrap">
         <input
           type="checkbox"
@@ -89,7 +89,7 @@ const SingleTodo = ({ todo, filterDeletedTodo, updateRevisedTodo }) => {
             onClick={() => {
               setIsEditing(true);
             }}
-            className="bg-lime-200 m-2 p-2 rounded-lg"
+            className="bg-lime-200 mx-1 p-2 rounded-lg"
             data-testid="modify-button"
           >
             수정
@@ -98,7 +98,7 @@ const SingleTodo = ({ todo, filterDeletedTodo, updateRevisedTodo }) => {
             onClick={() => {
               onClickDelete(todo.id);
             }}
-            className="bg-rose-200 m-2 p-2 rounded-lg"
+            className="bg-rose-200 mx-1 p-2 rounded-lg"
             data-testid="delete-button"
           >
             삭제
