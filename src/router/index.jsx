@@ -11,7 +11,7 @@ const Router = () => {
         {PUBLIC_ROUTE_ARR.map((route, index) => {
           return (
             <Route
-              path={route.path}
+              path={process.env.PUBLIC_URL + route.path}
               element={<PublicRouter>{route.element}</PublicRouter>}
               key={index}
             />
@@ -20,7 +20,7 @@ const Router = () => {
         {PRIVATE_ROUTE_ARR.map((route, index) => {
           return (
             <Route
-              path={route.path}
+              path={process.env.PUBLIC_URL + route.path}
               element={<PrivateRouter>{route.element}</PrivateRouter>}
               key={index}
             />
