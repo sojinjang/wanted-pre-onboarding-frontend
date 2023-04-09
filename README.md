@@ -1,5 +1,12 @@
 # wanted pre-onboarding frontend
-2023 wanted 프리온보딩 프론트엔드 인턴십 사전과제 ([🔗 과제 가이드 링크](https://github.com/walking-sunset/selection-task))
+<div>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/>
+  <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=flat-square&logo=Tailwind CSS&logoColor=white"/>
+</div>
+
+2023 wanted 프리온보딩 프론트엔드 인턴십 사전과제 
+[🔗 과제 가이드 링크](https://github.com/walking-sunset/selection-task) 
 
 ## [**🔗 배포 링크 이동**](https://sojinjang.github.io/wanted-pre-onboarding-frontend/)
 <img src="https://user-images.githubusercontent.com/111125577/218963015-93531672-81a9-4e43-b7a1-51700f6bad43.gif" width="600" />
@@ -18,7 +25,7 @@
 
   - 이메일 조건: `@` 포함
   - 비밀번호 조건: 8자 이상
-  - 이메일과 비밀번호의 유효성 검사 조건은 별도의 추가 조건 부여 없이 위의 조건대로만 진행해주세요ㅗ
+  - 이메일과 비밀번호의 유효성 검사 조건은 별도의 추가 조건 부여 없이 위의 조건대로만 진행해주세요
 - 입력된 이메일과 비밀번호가 유효성 검사를 통과하지 못한다면 button에 `disabled` 속성을 부여해주세요
 
 ✅ Assignment 2
