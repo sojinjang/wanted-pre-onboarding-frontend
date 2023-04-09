@@ -6,7 +6,7 @@ import { PUBLIC_ROUTE_ARR, PRIVATE_ROUTE_ARR } from "./ROUTE_INFO";
 
 const Router = () => {
   return (
-    <HashRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <Routes>
         {PUBLIC_ROUTE_ARR.map((route, index) => {
           return (
