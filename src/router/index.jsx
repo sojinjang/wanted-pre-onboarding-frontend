@@ -1,12 +1,12 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
 import { PublicRouter, PrivateRouter } from "./CustomRouters";
 import { PUBLIC_ROUTE_ARR, PRIVATE_ROUTE_ARR } from "./ROUTE_INFO";
 
 const Router = () => {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         {PUBLIC_ROUTE_ARR.map((route, index) => {
           return (
@@ -27,7 +27,7 @@ const Router = () => {
           );
         })}
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
